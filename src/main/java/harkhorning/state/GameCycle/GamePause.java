@@ -1,10 +1,13 @@
 package harkhorning.state.GameCycle;
 
-import harkhorning.state.ContextStream;
+import harkhorning.Graphics.UI.Button;
 import harkhorning.state.GameState;
+import harkhorning.state.State;
 import harkhorning.state.StateMachine;
 
-import static com.raylib.Colors.DARKGREEN;
+import java.util.ArrayList;
+
+import static com.raylib.Colors.DARKPURPLE;
 import static com.raylib.Colors.PURPLE;
 import static com.raylib.Raylib.*;
 import static harkhorning.state.GameCycle.InGameState.RUNNING;
@@ -12,10 +15,19 @@ import static harkhorning.state.GameCycle.InGameState.RUNNING;
 public class GamePause implements GameState {
 
     InGameStateMachine inGameStateMachine;
+    StateMachine s;
+    Button mainMenuBtn;
+    Button quitBtn;
+    ArrayList<Button> buttons = new ArrayList<>();
 
-    public GamePause(InGameStateMachine iGSM)
+    public GamePause(InGameStateMachine iGSM, StateMachine stateMachine)
     {
         this.inGameStateMachine = iGSM;
+        this.s = stateMachine;
+        mainMenuBtn = new Button(s, "Main Menu", State.MAIN_MENU, 28, (float)(GetScreenWidth() / 2), 1, 10);
+        quitBtn = new Button(s, "Quit", State.QUITE, 28, (float)(GetScreenWidth() / 2), 2, 10);
+        buttons.add(mainMenuBtn);
+        buttons.add(quitBtn);
     }
 
     @Override
@@ -27,11 +39,17 @@ public class GamePause implements GameState {
         if (IsKeyReleased(KEY_ESCAPE)) {
             inGameStateMachine.setState(RUNNING);
         }
+        for (Button button : buttons) {
+            button.MouseOver();
+        }
     }
     @Override
     public void Draw()
     {
-        ClearBackground(PURPLE);
+        ClearBackground(DARKPURPLE);
+        for (Button button : buttons) {
+            button.DrawButton();
+        }
     }
     @Override
     public void Exit()

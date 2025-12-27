@@ -15,7 +15,7 @@ public class Game {
 
     public Game()
     {
-//        SetConfigFlags(FLAG_FULLSCREEN_MODE);
+        SetConfigFlags(FLAG_FULLSCREEN_MODE);
         InitWindow(1280, 720, "Gnome Survivor");
         this.ctx = new ContextStream();
         this.s = new StateMachine(ctx);
