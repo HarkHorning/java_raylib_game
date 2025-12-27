@@ -1,6 +1,9 @@
 package harkhorning.state.GameCycle;
 
 import com.raylib.Raylib;
+import harkhorning.Core.Draws.DrawRoot;
+import harkhorning.Core.InitRoot;
+import harkhorning.Core.Updates.UpdateRoot;
 import harkhorning.state.ContextStream;
 import harkhorning.state.GameState;
 import harkhorning.state.StateMachine;
@@ -13,12 +16,18 @@ public class GameCycle implements GameState {
     StateMachine s;
     ContextStream ctx;
     InGameStateMachine inGameStateMachine;
+    InitRoot initRoot;
+    UpdateRoot updateRoot;
+    DrawRoot drawRoot;
 
     public GameCycle(StateMachine stateMachine, ContextStream ctx)
     {
         s = stateMachine;
         this.ctx = ctx;
         this.inGameStateMachine = new InGameStateMachine(s);
+        this.initRoot = new InitRoot();
+        this.updateRoot = new UpdateRoot(initRoot);
+        this.drawRoot = new DrawRoot(initRoot);
     }
 
     @Override
@@ -32,6 +41,7 @@ public class GameCycle implements GameState {
         if (inGameStateMachine.update()) return;
         if (IsKeyReleased(KEY_ESCAPE)) { inGameStateMachine.setState(PAUSE); }
         Raylib.Vector2 lockedGShift = ctx.GlobalShift;
+        updateRoot.update(lockedGShift);
     }
     @Override
     public void Draw()
@@ -39,6 +49,7 @@ public class GameCycle implements GameState {
         if (inGameStateMachine.draw()) return;
         DrawFPS(20, 20);
         Raylib.Vector2 lockedGShift = ctx.GlobalShift;
+        drawRoot.draw(lockedGShift);
     }
     @Override
     public void Exit()

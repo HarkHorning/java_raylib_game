@@ -1,6 +1,6 @@
 package harkhorning.Core
 
-class InitiatRoot {
+class InitRoot {
 
     var handshake: String = "Carry on."
 }
