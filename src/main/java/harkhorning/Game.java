@@ -15,10 +15,11 @@ public class Game {
 
     public Game()
     {
-        InitWindow(800, 450, "Gnome Survivor");
-        this.s = new StateMachine();
+//        SetConfigFlags(FLAG_FULLSCREEN_MODE);
+        InitWindow(1280, 720, "Gnome Survivor");
         this.ctx = new ContextStream();
-        this.updateThread = new UpdateThread(s, ctx);
+        this.s = new StateMachine(ctx);
+        this.updateThread = new UpdateThread(s);
     }
 
     public void Run()

@@ -29,9 +29,9 @@ public class MainMenu implements GameState {
     public void Init()
     {
         System.out.println("Initializing MainMenu");
-        startBtn = new Button(s, "Start", State.RUNNING, 18, (float)(GetScreenWidth() / 2), 0, 6);
-        optionsBtn = new Button(s, "Options", State.OPTION_MENU, 18, (float)(GetScreenWidth() / 2), 1, 6);
-        quitBtn = new Button(s, "Quit", State.QUITE, 18, (float)(GetScreenWidth() / 2), 2, 6);
+        startBtn = new Button(s, "Start", State.RUNNING, 28, (float)(GetScreenWidth() / 2), 0, 10);
+        optionsBtn = new Button(s, "Options", State.OPTION_MENU, 28, (float)(GetScreenWidth() / 2), 1, 10);
+        quitBtn = new Button(s, "Quit", State.QUITE, 28, (float)(GetScreenWidth() / 2), 2, 10);
         buttons.add(startBtn);
         buttons.add(optionsBtn);
         buttons.add(quitBtn);
@@ -46,7 +46,7 @@ public class MainMenu implements GameState {
     @Override
     public void Draw()
     {
-        com.CenteredText("Main Menu", Raylib.GetScreenWidth() / 2, 100, 22, com.colorMain);
+        com.CenteredText("GNOME SURVIVOR", Raylib.GetScreenWidth() / 2, 100, 44, com.colorMain);
         DrawFPS(20, 20);
         for (Button button : buttons) {
             button.DrawButton();

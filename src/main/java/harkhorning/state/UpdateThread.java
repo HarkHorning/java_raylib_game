@@ -4,12 +4,10 @@ public class UpdateThread implements Runnable {
 
     Thread updateThread;
     StateMachine s;
-    ContextStream ctx;
     private int FPS;
 
-    public UpdateThread(StateMachine s, ContextStream context) {
+    public UpdateThread(StateMachine s) {
         this.s = s;
-        this.ctx = context;
         FPS = 60;
     }
 

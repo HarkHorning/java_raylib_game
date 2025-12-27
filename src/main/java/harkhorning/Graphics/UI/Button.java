@@ -26,11 +26,11 @@ public class Button implements ButtonInterface {
         Font defaultFont = GetFontDefault();
         Vector2 textD = MeasureTextEx(defaultFont, t, size, 2);
         int textSize = Raylib.MeasureText(text, size);
-        p = new Raylib.Vector2().x(x - (float)(textSize / 2)).y(i * 32 + 180.0f);
+        p = new Raylib.Vector2().x(x - (float)(textSize / 2)).y(i * 64 + 260.0f);
         rect = new Rectangle()
             .x(p.x() - pad)
             .y(p.y() - pad)
-            .width(textD.x() + pad)
+            .width(textD.x() + pad * 2)
             .height(textD.y() + pad * 2);
     }
 

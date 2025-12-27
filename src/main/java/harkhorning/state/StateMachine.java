@@ -9,6 +9,7 @@ import harkhorning.state.Quitting.Quitting;
 public class StateMachine {
 
     private GameState currentState;
+    ContextStream ctx;
     private final MainMenu mainMenu;
     private final GameCycle gameCycle;
     private final OptionMenu optionMenu;
@@ -16,10 +17,11 @@ public class StateMachine {
     private final Quitting quitting;
     private boolean GAME_OVER = false;
 
-    public StateMachine()
+    public StateMachine(ContextStream ctx)
     {
+        this.ctx = ctx;
         mainMenu = new MainMenu(this);
-        gameCycle = new GameCycle(this);
+        gameCycle = new GameCycle(this, ctx);
         optionMenu = new OptionMenu(this);
         deathScreen = new DeathScreen(this);
         quitting = new Quitting(this);
