@@ -40,16 +40,14 @@ public class GameCycle implements GameState {
     {
         if (inGameStateMachine.update()) return;
         if (IsKeyReleased(KEY_ESCAPE)) { inGameStateMachine.setState(PAUSE); }
-        Raylib.Vector2 lockedGShift = ctx.GlobalShift;
-        updateRoot.update(lockedGShift);
+        updateRoot.update();
     }
     @Override
     public void Draw()
     {
         if (inGameStateMachine.draw()) return;
         DrawFPS(20, 20);
-        Raylib.Vector2 lockedGShift = ctx.GlobalShift;
-        drawRoot.draw(lockedGShift);
+        drawRoot.draw();
     }
     @Override
     public void Exit()

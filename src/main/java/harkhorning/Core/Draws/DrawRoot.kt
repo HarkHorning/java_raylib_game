@@ -5,7 +5,9 @@ import harkhorning.Core.InitRoot
 
 class DrawRoot(var initRoot: InitRoot) {
 
-    fun draw(p: Raylib.Vector2) {
-        println(initRoot.handshake)
+    fun draw() {
+        val locked: Raylib.Vector2 = initRoot.GLOBAL_SHIFT
+        initRoot.physicsShapes.drawAreas()
+        initRoot.player.draw(locked)
     }
 }
