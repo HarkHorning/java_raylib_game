@@ -2,14 +2,15 @@ package harkhorning.Core.Draws
 
 import com.raylib.Raylib
 import harkhorning.Core.InitRoot
+import harkhorning.Core.Managers.EntityM
 
-class DrawRoot(var root: InitRoot) {
+class DrawRoot(var r: InitRoot) {
+
+    val eM: EntityM = r.eM
 
     fun draw() {
-        val locked: Raylib.Vector2 = root.GLOBAL_SHIFT
-        for (i in 0..root.enemyList.size - 1) {
-            root.enemyList[i].drawAreas()
-        }
-        root.player.draw(locked)
+        val locked: Raylib.Vector2 = r.GLOBAL_SHIFT
+        r.map.drawMap(locked)
+        eM.drawEachEntity(locked)
     }
 }

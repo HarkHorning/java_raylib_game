@@ -20,7 +20,7 @@ class PlayerMovement(val root: InitRoot, val player: Player) {
         inputM = Vector2Normalize(inputM)
         root.GLOBAL_SHIFT.x(inputM.x() * playerSpeed.x())
         root.GLOBAL_SHIFT.y(inputM.y() * playerSpeed.y())
-        root.GLOBAL_SHIFT = Vector2Add(root.GLOBAL_SHIFT, player.blockPos)
+        root.GLOBAL_SHIFT = Vector2Add(root.GLOBAL_SHIFT, player.stagger)
     }
 
     fun check()
