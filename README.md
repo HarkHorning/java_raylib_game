@@ -2,3 +2,5 @@
 
 ## Gnome Survivor
 You play as a gnome as endless hordes of foul creatures attack you. You must escape and become more powerful.
+
+You will find more abilities the farther you adventure, but also more danger.
