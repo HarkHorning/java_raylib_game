@@ -5,15 +5,12 @@ import com.raylib.Raylib.IsKeyDown
 import com.raylib.Raylib.KEY_D
 import harkhorning.Core.InitRoot
 
-class UpdateRoot(var initRoot: InitRoot) {
+class UpdateRoot(var root: InitRoot) {
 
     fun update() {
-        if (IsKeyDown(KEY_D)) {
-            initRoot.GLOBAL_SHIFT.x(initRoot.GLOBAL_SHIFT.x() + 1)
-            println("D PRESSED")
-        }
-        val locked: Raylib.Vector2 = initRoot.GLOBAL_SHIFT
-        initRoot.physicsShapes.update(locked)
-        initRoot.player.update(locked)
+        root.playerMovement.check()
+        val locked: Raylib.Vector2 = root.GLOBAL_SHIFT
+        root.physicsShapes.update(locked)
+        root.player.update(locked)
     }
 }
