@@ -1,11 +1,11 @@
-package harkhorning.state.MainMenu;
+package harkhorning.State.MainMenu;
 
 import com.raylib.Raylib;
 import harkhorning.Graphics.UI.Button;
 import harkhorning.Graphics.UI.Components;
-import harkhorning.state.GameState;
-import harkhorning.state.State;
-import harkhorning.state.StateMachine;
+import harkhorning.State.GameState;
+import harkhorning.State.State;
+import harkhorning.State.StateMachine;
 
 import java.util.ArrayList;
 

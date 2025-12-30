@@ -1,10 +1,10 @@
-package harkhorning.state;
+package harkhorning.State;
 
-import harkhorning.state.DeathScreen.DeathScreen;
-import harkhorning.state.GameCycle.GameCycle;
-import harkhorning.state.MainMenu.MainMenu;
-import harkhorning.state.OptionMenu.OptionMenu;
-import harkhorning.state.Quitting.Quitting;
+import harkhorning.State.DeathScreen.DeathScreen;
+import harkhorning.State.GameCycle.GameCycle;
+import harkhorning.State.MainMenu.MainMenu;
+import harkhorning.State.OptionMenu.OptionMenu;
+import harkhorning.State.Quitting.Quitting;
 
 public class StateMachine {
 

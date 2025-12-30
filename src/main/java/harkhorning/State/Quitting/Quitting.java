@@ -1,18 +1,17 @@
-package harkhorning.state.DeathScreen;
+package harkhorning.State.Quitting;
 
-import harkhorning.state.GameState;
-import harkhorning.state.StateMachine;
+import harkhorning.State.GameState;
+import harkhorning.State.StateMachine;
 
-import static com.raylib.Colors.DARKGREEN;
-import static com.raylib.Colors.MAROON;
+import static com.raylib.Colors.BLACK;
 import static com.raylib.Raylib.ClearBackground;
 import static com.raylib.Raylib.DrawFPS;
 
-public class DeathScreen implements GameState {
+public class Quitting implements GameState {
 
     StateMachine s;
 
-    public DeathScreen(StateMachine stateMachine)
+    public Quitting(StateMachine stateMachine)
     {
         s = stateMachine;
     }
@@ -25,12 +24,13 @@ public class DeathScreen implements GameState {
     @Override
     public void Update()
     {
+        s.CLOSE_GAME();
     }
     @Override
     public void Draw()
     {
         DrawFPS(20, 20);
-        ClearBackground(MAROON);
+        ClearBackground(BLACK);
     }
     @Override
     public void Exit()

@@ -1,9 +1,9 @@
-package harkhorning.state.GameCycle;
+package harkhorning.State.GameCycle;
 
-import harkhorning.state.GameState;
-import harkhorning.state.StateMachine;
+import harkhorning.State.GameState;
+import harkhorning.State.StateMachine;
 
-import static harkhorning.state.GameCycle.InGameState.RUNNING;
+import static harkhorning.State.GameCycle.InGameState.RUNNING;
 
 public class InGameStateMachine {
 

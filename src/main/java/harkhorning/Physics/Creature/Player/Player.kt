@@ -14,7 +14,7 @@ class Player(p: Vector2, r: Float, h: Float, w: Float) : Creature(p, r, h, w)
 
     }
 
-    override fun draw(lockScroll: Vector2)
+    override fun draw()
     {
         drawAreas()
     }

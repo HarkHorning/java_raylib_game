@@ -1,4 +1,4 @@
-package harkhorning.state;
+package harkhorning.State;
 
 public class UpdateThread implements Runnable {
 

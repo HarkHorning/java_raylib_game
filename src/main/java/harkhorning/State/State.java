@@ -1,4 +1,4 @@
-package harkhorning.state;
+package harkhorning.State;
 
 public enum State {
     MAIN_MENU,

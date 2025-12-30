@@ -1,8 +1,8 @@
 package harkhorning.Graphics.UI;
 
 import com.raylib.Raylib;
-import harkhorning.state.State;
-import harkhorning.state.StateMachine;
+import harkhorning.State.State;
+import harkhorning.State.StateMachine;
 
 import static com.raylib.Colors.GRAY;
 import static com.raylib.Raylib.*;

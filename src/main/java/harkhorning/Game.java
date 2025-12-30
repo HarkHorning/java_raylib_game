@@ -1,8 +1,8 @@
 package harkhorning;
 
-import harkhorning.state.ContextStream;
-import harkhorning.state.StateMachine;
-import harkhorning.state.UpdateThread;
+import harkhorning.State.ContextStream;
+import harkhorning.State.StateMachine;
+import harkhorning.State.UpdateThread;
 
 import static com.raylib.Colors.RAYWHITE;
 import static com.raylib.Raylib.*;
@@ -15,7 +15,7 @@ public class Game {
 
     public Game()
     {
-        SetConfigFlags(FLAG_FULLSCREEN_MODE);
+//        SetConfigFlags(FLAG_FULLSCREEN_MODE);
         InitWindow(1280, 720, "Gnome Survivor");
         this.ctx = new ContextStream();
         this.s = new StateMachine(ctx);

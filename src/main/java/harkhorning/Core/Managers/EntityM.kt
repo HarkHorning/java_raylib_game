@@ -7,7 +7,7 @@ import harkhorning.Core.InitRoot
 import harkhorning.Physics.Creature.Creature
 import harkhorning.Physics.Creature.Player.Player
 
-class EntityM(val r: InitRoot) {
+class EntityM() {
 
     var pos: Raylib.Vector2 = Raylib.Vector2().x(100.0f).y(80.0f)
     var enemy1: Creature = Creature(pos, 16.0f, 32.0f, 32.0f)
@@ -36,11 +36,11 @@ class EntityM(val r: InitRoot) {
         player.update(locked)
     }
 
-    fun drawEachEntity(locked : Raylib.Vector2)
+    fun drawEachEntity()
     {
         for (i in 0..enemyList.size - 1) {
             enemyList[i].drawAreas()
         }
-        player.draw(locked)
+        player.draw()
     }
 }

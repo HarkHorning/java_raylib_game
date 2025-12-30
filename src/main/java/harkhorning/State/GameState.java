@@ -1,4 +1,4 @@
-package harkhorning.state;
+package harkhorning.State;
 
 public interface GameState {
     void Init();

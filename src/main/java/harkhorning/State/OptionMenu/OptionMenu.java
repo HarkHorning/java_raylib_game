@@ -1,10 +1,9 @@
-package harkhorning.state.OptionMenu;
+package harkhorning.State.OptionMenu;
 
-import harkhorning.state.GameState;
-import harkhorning.state.StateMachine;
+import harkhorning.State.GameState;
+import harkhorning.State.StateMachine;
 
 import static com.raylib.Colors.DARKBROWN;
-import static com.raylib.Colors.DARKGREEN;
 import static com.raylib.Raylib.ClearBackground;
 import static com.raylib.Raylib.DrawFPS;
 

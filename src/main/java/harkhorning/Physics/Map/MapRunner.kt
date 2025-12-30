@@ -41,7 +41,7 @@ class MapRunner {
         }
     }
 
-    fun drawMap(locked : Raylib.Vector2)
+    fun drawMap()
     {
         for (i in 0..cols) {
             for (j in 0..rows) {

@@ -21,7 +21,7 @@ open class Creature(p: Vector2, r: Float, h: Float, w: Float) : CollisionBase(p,
         p.y(p.y() - lockScroll.y())
     }
 
-    open fun draw(lockScroll: Vector2)
+    open fun draw()
     {
 
     }

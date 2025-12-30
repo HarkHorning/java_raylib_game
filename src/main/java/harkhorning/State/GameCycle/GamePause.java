@@ -1,16 +1,15 @@
-package harkhorning.state.GameCycle;
+package harkhorning.State.GameCycle;
 
 import harkhorning.Graphics.UI.Button;
-import harkhorning.state.GameState;
-import harkhorning.state.State;
-import harkhorning.state.StateMachine;
+import harkhorning.State.GameState;
+import harkhorning.State.State;
+import harkhorning.State.StateMachine;
 
 import java.util.ArrayList;
 
 import static com.raylib.Colors.DARKPURPLE;
-import static com.raylib.Colors.PURPLE;
 import static com.raylib.Raylib.*;
-import static harkhorning.state.GameCycle.InGameState.RUNNING;
+import static harkhorning.State.GameCycle.InGameState.RUNNING;
 
 public class GamePause implements GameState {
 

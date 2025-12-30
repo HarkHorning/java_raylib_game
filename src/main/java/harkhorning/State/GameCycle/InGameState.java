@@ -1,4 +1,4 @@
-package harkhorning.state.GameCycle;
+package harkhorning.State.GameCycle;
 
 public enum InGameState {
     RUNNING,

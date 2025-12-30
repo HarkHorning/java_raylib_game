@@ -1,15 +1,14 @@
-package harkhorning.state.GameCycle;
+package harkhorning.State.GameCycle;
 
-import com.raylib.Raylib;
 import harkhorning.Core.Draws.DrawRoot;
 import harkhorning.Core.InitRoot;
 import harkhorning.Core.Updates.UpdateRoot;
-import harkhorning.state.ContextStream;
-import harkhorning.state.GameState;
-import harkhorning.state.StateMachine;
-import static com.raylib.Colors.*;
+import harkhorning.State.ContextStream;
+import harkhorning.State.GameState;
+import harkhorning.State.StateMachine;
+
 import static com.raylib.Raylib.*;
-import static harkhorning.state.GameCycle.InGameState.PAUSE;
+import static harkhorning.State.GameCycle.InGameState.PAUSE;
 
 public class GameCycle implements GameState {
 

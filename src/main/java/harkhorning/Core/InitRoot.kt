@@ -1,19 +1,14 @@
 package harkhorning.Core
 
 import com.raylib.Raylib
-import com.raylib.Raylib.GetScreenHeight
-import com.raylib.Raylib.GetScreenWidth
 import harkhorning.Core.Managers.EntityM
-import harkhorning.Physics.Creature.Creature
-import harkhorning.Physics.Creature.Player.Player
 import harkhorning.Physics.Creature.Player.PlayerMovement
 import harkhorning.Physics.Map.MapRunner
 
 class InitRoot() {
 
     var GLOBAL_SHIFT: Raylib.Vector2 = Raylib.Vector2()
-    val eM: EntityM = EntityM(this)
+    val eM: EntityM = EntityM()
     val playerMovement: PlayerMovement = PlayerMovement(this, eM.player)
     val map: MapRunner = MapRunner()
-
 }

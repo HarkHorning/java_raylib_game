@@ -1,6 +1,4 @@
-package harkhorning.state;
-
-import com.raylib.Raylib.Vector2;
+package harkhorning.State;
 
 public class ContextStream {
 
