@@ -9,3 +9,6 @@ You will find more abilities the farther you adventure, but also more danger.
 ## How it works
 
 ## Why
+
+# Known Issues
+
