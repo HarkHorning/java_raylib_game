@@ -12,5 +12,5 @@ You will find more abilities the farther you adventure, but also more danger.
 
 I originally made this game using plain Java and the JFrame library -- which worked sometimes.
 
-# Known Issues
+## Known Issues
 
