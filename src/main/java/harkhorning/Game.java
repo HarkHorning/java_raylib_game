@@ -1,8 +1,8 @@
 package harkhorning;
 
-import harkhorning.State.ContextStream;
-import harkhorning.State.StateMachine;
-import harkhorning.State.UpdateThread;
+import harkhorning.state.ContextStream;
+import harkhorning.state.StateMachine;
+import harkhorning.state.UpdateThread;
 
 import static com.raylib.Colors.RAYWHITE;
 import static com.raylib.Raylib.*;
