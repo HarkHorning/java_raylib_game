@@ -9,8 +9,10 @@ import harkhorning.physics.creature.player.Player
 
 class EntityM() {
 
-    val enemyList = mutableListOf<Creature>()
+    var enemyList = mutableListOf<Creature>()
     val sp: Spawner = Spawner()
+    val interval = 20
+    var timer = 0
 
     var playerPos: Raylib.Vector2 = Raylib.Vector2()
         .x(GetScreenWidth() / 2.0f)
@@ -26,24 +28,33 @@ class EntityM() {
         for (e2 in enemyList) { if (e != e2) { e.checkGroundCol(e2.groundCollisionRect(), e2.p) } }
     }
 
+    fun altOneUpdate()
+    {
+        if (timer >= interval) {
+            timer = 0
+            enemyList.sortBy { it.p.y() }
+            if (sp.checkForSpawn()) sp.spawnNewEnemy(enemyList) // find a better place for this
+        } else timer ++
+    }
+
     fun forEachEntity(locked : Raylib.Vector2)
     {
-        for (e in enemyList) {
-            e.update(locked)
-            e.checkGroundCol(player.groundCollisionRect(), player.p)
-            entityToEntity(e)
-            e.updateDrawOrder()
+        val li = enemyList
+        for (i in 0 until li.size) {
+            li[i].update(locked)
+            li[i].checkGroundCol(player.groundCollisionRect(), player.p)
+            entityToEntity(li[i])
         }
+        enemyList = li
 
-        enemyList.sortedByDescending { it.drawPlacement }
-
-        if (sp.checkForSpawn()) sp.spawnNewEnemy(enemyList) // find a better place for this
+        altOneUpdate()
     }
 
     fun drawEachEntity()
     {
-        for (e in enemyList) {
-            e.draw()
+        val li = enemyList // exists here so that deletions to not cause index errors
+        for (i in 0 until li.size) {
+            li[i].draw()
         }
     }
 }

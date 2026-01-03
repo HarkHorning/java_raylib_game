@@ -9,7 +9,7 @@ import kotlin.random.Random
 class Spawner {
 
     var spawnTimer = 0
-    var spawnInterval = 100
+    var spawnInterval = 20
     var offScreenD = 32.0f
 
     fun rNum() : Float { return Random.nextFloat() }
@@ -44,7 +44,7 @@ class Spawner {
     {
         if (spawnTimer >= spawnInterval) {
             spawnTimer = 0
-            spawnInterval = (2500 * rNum()).toInt()
+            spawnInterval = (100 * rNum()).toInt()
             return true
         }
         spawnTimer ++

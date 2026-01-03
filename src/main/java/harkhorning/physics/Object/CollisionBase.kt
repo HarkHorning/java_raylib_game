@@ -17,10 +17,6 @@ open class CollisionBase(p: Vector2, r: Float, h: Float, w: Float) : PhysicsShap
     var direction = Vector2()
     var drawPlacement: Int = 0;
 
-    open fun updateDrawOrder() {
-        drawPlacement = p.y().toInt()
-    }
-
     open fun checkGroundCol(r2: Rectangle, p2: Vector2) : Boolean
     {
         val check: Boolean = CheckCollisionRecs(this.groundCollisionRect(), r2)
