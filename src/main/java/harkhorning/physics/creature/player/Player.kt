@@ -11,6 +11,8 @@ import harkhorning.physics.creature.Creature
 class Player(p: Vector2, r: Float, h: Float, w: Float) : Creature(p, r, h, w)
 {
 
+    val animations = PlayerAnimation()
+
     override fun checkGroundCol(r2: Rectangle, p2: Vector2) : Boolean
     { // come back to this
         val check: Boolean = CheckCollisionRecs(this.groundCollisionRect(), r2)
@@ -31,5 +33,6 @@ class Player(p: Vector2, r: Float, h: Float, w: Float) : Creature(p, r, h, w)
     override fun draw()
     {
         drawAreas()
+        animations.animate(drawBox())
     }
 }
