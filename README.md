@@ -7,3 +7,5 @@ You play as a gnome as endless hordes of foul creatures attack you. You must esc
 You will find more abilities the farther you adventure, but also more danger.
 
 ## How it works
+
+## Why
