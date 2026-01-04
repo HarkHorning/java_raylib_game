@@ -3,7 +3,6 @@ package harkhorning.physics.creature.player
 import com.raylib.Raylib.CheckCollisionRecs
 import com.raylib.Raylib.Rectangle
 import com.raylib.Raylib.Vector2
-import com.raylib.Raylib.Vector2Add
 import com.raylib.Raylib.Vector2Normalize
 import com.raylib.Raylib.Vector2Subtract
 import harkhorning.physics.creature.Creature
@@ -18,8 +17,10 @@ class Player(p: Vector2, r: Float, h: Float, w: Float) : Creature(p, r, h, w)
         val check: Boolean = CheckCollisionRecs(this.groundCollisionRect(), r2)
         if (check)
         {
-            val direction_vec: Vector2? = Vector2Subtract(p, p2) //
-            blockPos = Vector2Normalize(direction_vec)
+            val directionVec: Vector2? = Vector2Subtract(p, p2) //
+            blockPos = Vector2Normalize(directionVec)
+            stagger = Vector2Normalize(directionVec)
+            
 //            p = Vector2Add(p, blockPos)
         }
         return check
@@ -32,7 +33,7 @@ class Player(p: Vector2, r: Float, h: Float, w: Float) : Creature(p, r, h, w)
 
     override fun draw()
     {
-        drawAreas()
+//        drawAreas()
         animations.animate(drawBox())
     }
 }

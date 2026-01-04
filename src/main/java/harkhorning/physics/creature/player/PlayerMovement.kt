@@ -9,6 +9,8 @@ import com.raylib.Raylib.KEY_W
 import com.raylib.Raylib.Vector2Add
 import com.raylib.Raylib.Vector2Normalize
 import harkhorning.core.InitRoot
+import harkhorning.graphics.animation.AnimationDirection
+import harkhorning.graphics.animation.AnimationEnums
 
 class PlayerMovement(val root: InitRoot, val player: Player) {
 
@@ -17,6 +19,8 @@ class PlayerMovement(val root: InitRoot, val player: Player) {
 
     fun normalize()
     {
+        if (inputM.x() != 0.0f || inputM.y() != 0.0f) {player.animations.setAnimationState(AnimationEnums.WALKING)}
+        else {player.animations.setAnimationState(AnimationEnums.STANDING)}
         inputM = Vector2Normalize(inputM)
         root.globalShift.x(inputM.x() * playerSpeed.x())
         root.globalShift.y(inputM.y() * playerSpeed.y())
@@ -25,9 +29,13 @@ class PlayerMovement(val root: InitRoot, val player: Player) {
 
     fun check()
     {
-        if (IsKeyDown(KEY_D) && player.blockPos.x() >= 0.0f) { inputM.x(1.0f) }
-        else if (IsKeyDown(KEY_A) && player.blockPos.x() <= 0.0f) { inputM.x(-1.0f) }
-        else {
+        if (IsKeyDown(KEY_D) && player.blockPos.x() >= 0.0f) {
+            inputM.x(1.0f)
+            if (player.animations.direction != AnimationDirection.RIGHT) player.animations.direction = AnimationDirection.RIGHT
+        } else if (IsKeyDown(KEY_A) && player.blockPos.x() <= 0.0f) {
+            inputM.x(-1.0f)
+            if (player.animations.direction != AnimationDirection.LEFT) player.animations.direction = AnimationDirection.LEFT
+        } else {
             root.globalShift.x(0.0f)
             inputM.x(0.0f)
         }

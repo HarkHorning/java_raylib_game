@@ -1,4 +1,4 @@
-package harkhorning.physics.Object
+package harkhorning.physics.objects
 
 import com.raylib.Colors.*
 import com.raylib.Raylib.Vector2

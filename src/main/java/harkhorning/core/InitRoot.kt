@@ -3,7 +3,7 @@ package harkhorning.core
 import com.raylib.Raylib
 import harkhorning.core.managers.EntityM
 import harkhorning.physics.creature.player.PlayerMovement
-import harkhorning.physics.Map.MapRunner
+import harkhorning.physics.maps.MapRunner
 
 class InitRoot() {
 

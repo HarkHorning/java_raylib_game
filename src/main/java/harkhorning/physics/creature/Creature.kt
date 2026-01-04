@@ -1,14 +1,12 @@
 package harkhorning.physics.creature
 
-import com.raylib.Raylib.GetFrameTime
 import com.raylib.Raylib.GetScreenHeight
 import com.raylib.Raylib.GetScreenWidth
 import com.raylib.Raylib.Vector2
 import com.raylib.Raylib.Vector2Add
 import com.raylib.Raylib.Vector2Normalize
-import com.raylib.Raylib.Vector2Scale
 import com.raylib.Raylib.Vector2Subtract
-import harkhorning.physics.Object.CollisionBase
+import harkhorning.physics.objects.CollisionBase
 
 open class Creature(p: Vector2, r: Float, h: Float, w: Float) : CollisionBase(p, r, h, w)
 {

@@ -11,7 +11,7 @@ enum class AnimationType {
     REPEATING
 }
 
-enum class AnimationDirection {
-    RIGHT,
-    LEFT
+enum class AnimationDirection(val value: Int) {
+    RIGHT(1),
+    LEFT(-1)
 }

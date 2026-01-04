@@ -1,4 +1,4 @@
-package harkhorning.physics.Object
+package harkhorning.physics.objects
 
 import com.raylib.Raylib.CheckCollisionRecs
 import com.raylib.Raylib.Rectangle

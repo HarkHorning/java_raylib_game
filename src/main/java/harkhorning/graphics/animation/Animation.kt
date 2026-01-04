@@ -9,7 +9,8 @@ class Animation(val start: Int,
                 var step: Int,
                 var speed: Float,
                 var remaining: Float,
-                var type: AnimationType)
+                var type: AnimationType,
+                var spriteSpan: Int)
 {
 
     fun updateAnimation()
@@ -38,9 +39,13 @@ class Animation(val start: Int,
 
     fun animationFrame(numFramesPerRow : Int) : Raylib.Rectangle
     {
-        val x = (current % numFramesPerRow) * 32
-        val y = (current / numFramesPerRow) * 32
-        val r : Raylib.Rectangle = Raylib.Rectangle().x(x.toFloat()).y(y.toFloat()).width(32f).height(32f)
+        val x = (current % numFramesPerRow) * spriteSpan
+        val y = (current / numFramesPerRow) * spriteSpan
+        val r : Raylib.Rectangle = Raylib.Rectangle()
+                        .x(x.toFloat())
+                        .y(y.toFloat())
+                        .width(spriteSpan.toFloat())
+                        .height(spriteSpan.toFloat())
 
         return r
     }

@@ -45,8 +45,8 @@ public class GameCycle implements GameState {
     public void Draw()
     {
         if (inGameStateMachine.draw()) return;
-        DrawFPS(20, 20);
         drawRoot.draw();
+        DrawFPS(20, 20);
     }
     @Override
     public void Exit()

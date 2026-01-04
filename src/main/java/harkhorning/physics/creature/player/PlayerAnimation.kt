@@ -5,16 +5,18 @@ import com.raylib.Raylib
 import com.raylib.Raylib.DrawTexturePro
 import com.raylib.Raylib.LoadTexture
 import harkhorning.graphics.animation.Animation
+import harkhorning.graphics.animation.AnimationDirection
 import harkhorning.graphics.animation.AnimationEnums
 import harkhorning.graphics.animation.AnimationType
 
 class PlayerAnimation {
 
-    var sprite = LoadTexture("src/main/resources/assets/char_gnome_32.png")
-    val standing = Animation(0, 6, 0, 1, 0.2f, 0.2f, AnimationType.REPEATING)
-    val walking = Animation(0, 6, 0, 1, 0.2f, 0.2f, AnimationType.REPEATING)
-    val dying = Animation(0, 6, 0, 1, 0.2f, 0.2f, AnimationType.SINGLE)
+    var sprite: Raylib.Texture? = LoadTexture("src/main/resources/assets/char_gnome_32.png")
+    val standing = Animation(0, 5, 0, 1, 0.2f, 0.2f, AnimationType.REPEATING, 32)
+    val walking = Animation(12, 17, 0, 1, 0.2f, 0.2f, AnimationType.REPEATING, 32)
+    val dying = Animation(6, 11, 0, 1, 0.2f, 0.2f, AnimationType.SINGLE, 32)
     var currentAnimation: Animation? = standing
+    var direction: AnimationDirection = AnimationDirection.RIGHT
 
     fun setAnimationState(newAnimationState : AnimationEnums)
     {
@@ -29,6 +31,7 @@ class PlayerAnimation {
     {
         currentAnimation?.updateAnimation()
         var drawRect = currentAnimation?.animationFrame(6)
+        if (direction.value == -1) drawRect?.width(-drawRect.width())
         return drawRect
     }
 
@@ -36,6 +39,6 @@ class PlayerAnimation {
     {
         val origin = Raylib.Vector2()
         DrawTexturePro(sprite, getDrawRect(), dest,
-            origin as Raylib.Vector2?, 0.0f, WHITE);
+            origin as Raylib.Vector2?, 0.0f, WHITE)
     }
 }
