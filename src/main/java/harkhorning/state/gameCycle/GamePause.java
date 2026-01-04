@@ -1,6 +1,7 @@
 package harkhorning.state.gameCycle;
 
 import harkhorning.graphics.ui.Button;
+import harkhorning.graphics.ui.ButtonInGame;
 import harkhorning.state.GameState;
 import harkhorning.state.State;
 import harkhorning.state.StateMachine;
@@ -15,6 +16,7 @@ public class GamePause implements GameState {
 
     InGameStateMachine inGameStateMachine;
     StateMachine s;
+    Button resume;
     Button mainMenuBtn;
     Button quitBtn;
     ArrayList<Button> buttons = new ArrayList<>();
@@ -23,8 +25,10 @@ public class GamePause implements GameState {
     {
         this.inGameStateMachine = iGSM;
         this.s = stateMachine;
+        resume = new ButtonInGame(s, inGameStateMachine, "Pause", RUNNING, State.RUNNING, 28, (float)(GetScreenWidth() / 2), 0, 10);
         mainMenuBtn = new Button(s, "Main Menu", State.MAIN_MENU, 28, (float)(GetScreenWidth() / 2), 1, 10);
         quitBtn = new Button(s, "Quit", State.QUITE, 28, (float)(GetScreenWidth() / 2), 2, 10);
+        buttons.add(resume);
         buttons.add(mainMenuBtn);
         buttons.add(quitBtn);
     }
@@ -35,7 +39,7 @@ public class GamePause implements GameState {
     @Override
     public void Update()
     {
-        if (IsKeyReleased(KEY_ESCAPE)) {
+        if (IsKeyPressed(KEY_ESCAPE)) {
             inGameStateMachine.setState(RUNNING);
         }
         for (Button button : buttons) {

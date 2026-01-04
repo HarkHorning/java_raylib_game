@@ -17,6 +17,7 @@ dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 //    testImplementation(kotlin('test'))
+//    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:null")
 }
 
 tasks.test {

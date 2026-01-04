@@ -7,6 +7,12 @@ import harkhorning.state.ContextStream;
 import harkhorning.state.GameState;
 import harkhorning.state.StateMachine;
 
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+
+import static com.raylib.Colors.*;
 import static com.raylib.Raylib.*;
 import static harkhorning.state.gameCycle.InGameState.PAUSE;
 
@@ -37,13 +43,14 @@ public class GameCycle implements GameState {
     @Override
     public void Update()
     {
+        if (IsKeyDown(KEY_ESCAPE)) { inGameStateMachine.setState(PAUSE); }
         if (inGameStateMachine.update()) return;
-        if (IsKeyReleased(KEY_ESCAPE)) { inGameStateMachine.setState(PAUSE); }
         updateRoot.update();
     }
     @Override
     public void Draw()
     {
+        ClearBackground(BLACK);
         if (inGameStateMachine.draw()) return;
         drawRoot.draw();
         DrawFPS(20, 20);

@@ -1,6 +1,5 @@
 package harkhorning.physics.maps
 
-import com.raylib.Colors.DARKGRAY
 import com.raylib.Colors.WHITE
 import com.raylib.Raylib
 import com.raylib.Raylib.DrawTexturePro
@@ -14,20 +13,18 @@ import com.raylib.Raylib.Vector2Scale
 class MapRunner {
 
     var mapSprite: Raylib.Texture? = LoadTexture("src/main/resources/assets/grass_basic_32.png")
-    var cols: Int = 30
-    var rows: Int = 33
+    var cols: Int
+    var rows: Int
     var tileD: Vector2 = Vector2().x(32.0f).y(16.0f)
     var mapXY: Vector2 = Vector2()
     var mapI: Vector2 = Vector2()
-    var fixedMapXY: Vector2 = Vector2()
-    var fixedMapI: Vector2 = Vector2()
 
     init {
         cols = GetScreenWidth() / 32
-        rows = GetScreenHeight() / 16
+        rows = (GetScreenHeight() / 16) + 1
     }
 
-    fun updateMap(locked : Raylib.Vector2)
+    fun updateMap(locked : Vector2)
     {
         val negLock: Vector2 = Vector2Scale(locked, -1.0f);
         mapXY = Vector2Add(mapXY, negLock) // might need to change this
@@ -49,12 +46,6 @@ class MapRunner {
     {
         for (i in 0..cols) {
             for (j in 0..rows) {
-//                Raylib.DrawRectangleLines(
-//                    (mapXY.x().toInt() + (i * tileD.x())).toInt(),
-//                    mapXY.y().toInt() + (j * tileD.y()).toInt(),
-//                    tileD.x().toInt(),
-//                    tileD.y().toInt(),
-//                    DARKGRAY)
                 val rect = Raylib.Rectangle()
                     .x(0f)
                     .y(0f)
@@ -67,10 +58,14 @@ class MapRunner {
                     .width(tileD.x())
                     .height(tileD.y())
 
-                val origin = Raylib.Vector2()
-
-                DrawTexturePro(mapSprite, rect, dest,
-                    origin as Raylib.Vector2?, 0.0f, WHITE)
+                DrawTexturePro(
+                    mapSprite,
+                    rect,
+                    dest,
+                    Vector2(),
+                    0.0f,
+                    WHITE
+                )
             }
         }
     }

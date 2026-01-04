@@ -6,8 +6,15 @@ import harkhorning.state.mainMenu.MainMenu;
 import harkhorning.state.optionMenu.OptionMenu;
 import harkhorning.state.quitting.Quitting;
 
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+
+import static com.raylib.Colors.WHITE;
+import static com.raylib.Raylib.DrawText;
+
 public class StateMachine {
 
+    private final ReadWriteLock rwLock = new ReentrantReadWriteLock();
     private GameState currentState;
     ContextStream ctx;
     private final MainMenu mainMenu;
@@ -16,6 +23,9 @@ public class StateMachine {
     private final DeathScreen deathScreen;
     private final Quitting quitting;
     private boolean GAME_OVER = false;
+
+
+    int updatesPS = 0;
 
     public StateMachine(ContextStream ctx)
     {
@@ -56,12 +66,22 @@ public class StateMachine {
 
     public void UpdateGame()
     {
-        currentState.Update();
+        rwLock.writeLock().lock();
+        try {
+            currentState.Update();
+        } finally {
+            rwLock.writeLock().unlock();
+        }
     }
 
     public void DrawGame()
     {
-        currentState.Draw();
+        rwLock.readLock().lock();
+        try {
+            currentState.Draw();
+        } finally {
+            rwLock.readLock().unlock();
+        }
     }
 
     public void CLOSE_GAME()

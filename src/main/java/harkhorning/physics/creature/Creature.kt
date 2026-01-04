@@ -1,5 +1,6 @@
 package harkhorning.physics.creature
 
+import com.raylib.Raylib.GetFrameTime
 import com.raylib.Raylib.GetScreenHeight
 import com.raylib.Raylib.GetScreenWidth
 import com.raylib.Raylib.Vector2

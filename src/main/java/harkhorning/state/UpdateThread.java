@@ -1,5 +1,8 @@
 package harkhorning.state;
 
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
+
 public class UpdateThread implements Runnable {
 
     Thread updateThread;
@@ -8,15 +11,15 @@ public class UpdateThread implements Runnable {
 
     public UpdateThread(StateMachine s) {
         this.s = s;
-        FPS = 60;
+        FPS = 30;
     }
 
-    public void startGameCycleThread() {
+    public void startUpdateThread() {
         updateThread = new Thread(this);
         updateThread.start();
     }
 
-    public void stopRenderThread() {
+    public void stopUpdateThread() {
         if (updateThread != null) {
             Thread.currentThread().interrupt();
             updateThread = null;
