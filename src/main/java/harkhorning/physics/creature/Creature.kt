@@ -9,8 +9,10 @@ import com.raylib.Raylib.Vector2Normalize
 import com.raylib.Raylib.Vector2Subtract
 import harkhorning.physics.objects.CollisionBase
 
-open class Creature(p: Vector2, r: Float, h: Float, w: Float) : CollisionBase(p, r, h, w)
+open class Creature(p: Vector2, r: Float, h: Float, w: Float, var damage: Int, var power: Float) : CollisionBase(p, r, h, w)
 {
+
+    var canInteractWithPlayer = false
 
     init {
         speed.x(100.0f)

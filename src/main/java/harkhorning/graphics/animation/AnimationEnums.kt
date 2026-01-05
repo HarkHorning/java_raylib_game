@@ -3,6 +3,7 @@ package harkhorning.graphics.animation
 enum class AnimationEnums {
     STANDING,
     WALKING,
+    STAGGER,
     DYING
 }
 

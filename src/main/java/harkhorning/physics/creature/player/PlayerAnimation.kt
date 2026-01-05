@@ -16,6 +16,7 @@ class PlayerAnimation {
     var sprite: Raylib.Texture? = LoadTexture("src/main/resources/assets/char_gnome_32.png")
     val standing = Animation(0, 5, 0, 1, 0.2f, 0.2f, AnimationType.REPEATING, 32)
     val walking = Animation(12, 17, 0, 1, 0.2f, 0.2f, AnimationType.REPEATING, 32)
+    val stagger = Animation(18, 23, 0, 1, 0.2f, 0.2f, AnimationType.REPEATING, 32)
     val dying = Animation(6, 11, 0, 1, 0.2f, 0.2f, AnimationType.SINGLE, 32)
     var currentAnimation: Animation? = standing
     var direction: AnimationDirection = AnimationDirection.RIGHT
@@ -25,6 +26,7 @@ class PlayerAnimation {
         currentAnimation = when (newAnimationState) {
             AnimationEnums.STANDING -> standing
             AnimationEnums.WALKING -> walking
+            AnimationEnums.STAGGER -> stagger
             AnimationEnums.DYING -> dying
         }
     }

@@ -26,14 +26,14 @@ public class Game { // make this a runnable
     {
         Raylib r = new Raylib();
         SetExitKey(KEY_NULL);
-        SetTargetFPS(60);
+        SetTargetFPS(30);
 
         while (!WindowShouldClose() && !s.CHECK_GAME_OVER()) {
             BeginDrawing();
             ClearBackground(RAYWHITE);
 
-            s.UpdateGame();
-            s.DrawGame();
+            s.UpdateGame(); // calls update function in StateMachine class
+            s.DrawGame(); // calls draw function in StateMachine class
 
             EndDrawing();
         }

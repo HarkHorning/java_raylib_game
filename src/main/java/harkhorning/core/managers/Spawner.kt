@@ -1,8 +1,6 @@
-package harkhorning.core.functional
+package harkhorning.core.managers
 
 import com.raylib.Raylib
-import com.raylib.Raylib.GetScreenHeight
-import com.raylib.Raylib.GetScreenWidth
 import harkhorning.core.HardGlobalVariables
 import harkhorning.physics.creature.Creature
 import harkhorning.physics.creature.enemies.BasicEnemy
@@ -16,25 +14,25 @@ class Spawner {
     var spawnInterval = 10
     var offScreenD = 32.0f * hC.scaler
 
-    fun rNum() : Float { return Random.nextFloat() }
+    fun rNum() : Float { return Random.Default.nextFloat() }
 
     fun randomSpawnLocation() : Raylib.Vector2
     {
         var x : Float = -offScreenD
         var y : Float = -offScreenD
         if (rNum() > 0.5f) {
-            x = rNum() * GetScreenWidth()
+            x = rNum() * Raylib.GetScreenWidth()
             if (rNum() > 0.5f) y = -offScreenD
         } else {
-            y = rNum() * GetScreenHeight()
-            if (rNum() > 0.5f) x = offScreenD + GetScreenWidth()
+            y = rNum() * Raylib.GetScreenHeight()
+            if (rNum() > 0.5f) x = offScreenD + Raylib.GetScreenWidth()
         }
         return Raylib.Vector2().x(x).y(y)
     }
 
     fun chooseEnemy() : Creature
     {
-        return BasicEnemy(randomSpawnLocation(), 16.0f * hC.scaler, 32.0f * hC.scaler, 32.0f * hC.scaler)
+        return BasicEnemy(randomSpawnLocation(), 16.0f * hC.scaler, 32.0f * hC.scaler, 32.0f * hC.scaler, 1, 12f)
     }
 
     fun spawnNewEnemy(l: MutableList<Creature>) : MutableList<Creature>

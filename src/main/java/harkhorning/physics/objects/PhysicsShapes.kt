@@ -5,11 +5,8 @@ import com.raylib.Raylib.Vector2
 import com.raylib.Raylib.Rectangle
 import com.raylib.Raylib.DrawRectangleRec
 
-open class PhysicsShapes(var p: Vector2, var r: Float, var h: Float, var w: Float)
+abstract class PhysicsShapes(var p: Vector2, var r: Float, var h: Float, var w: Float)
 {
-//    var pTL: Vector2 = Vector2() // top left corner. origin of collision box and sprite draw.
-//        .x(p.x() - r)
-//        .y(p.y() - r)
 
     fun drawBox() : Rectangle
     { // area sprite is drawn on

@@ -7,7 +7,7 @@ import com.raylib.Raylib.Vector2Add
 import com.raylib.Raylib.Vector2Normalize
 import com.raylib.Raylib.Vector2Subtract
 
-open class CollisionBase(p: Vector2, r: Float, h: Float, w: Float) : PhysicsShapes(p, r, h, w)
+abstract class CollisionBase(p: Vector2, r: Float, h: Float, w: Float) : PhysicsShapes(p, r, h, w)
 {
 
     var blockPos: Vector2 = Vector2();
@@ -15,7 +15,6 @@ open class CollisionBase(p: Vector2, r: Float, h: Float, w: Float) : PhysicsShap
     var speed = Vector2()
     var playerL = Vector2()
     var direction = Vector2()
-    var drawPlacement: Int = 0;
 
     open fun checkGroundCol(r2: Rectangle, p2: Vector2) : Boolean
     {

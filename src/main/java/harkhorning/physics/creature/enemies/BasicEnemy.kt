@@ -8,7 +8,7 @@ import harkhorning.graphics.animation.AnimationDirection
 import harkhorning.graphics.animation.AnimationEnums
 import harkhorning.physics.creature.Creature
 
-class BasicEnemy(p: Vector2, r: Float, h: Float, w: Float) : Creature(p, r, h, w) {
+class BasicEnemy(p: Vector2, r: Float, h: Float, w: Float, damage: Int, power: Float) : Creature(p, r, h, w, damage, power) {
 
     val animator = BasicEnemyAnimator("src/main/resources/assets/enemy_skeleton_32.png")
 
@@ -22,19 +22,29 @@ class BasicEnemy(p: Vector2, r: Float, h: Float, w: Float) : Creature(p, r, h, w
         } else { animator.setAnimationState(AnimationEnums.STANDING) }
     }
 
-    override fun update(lockScroll: Vector2, time: Float)
+    fun moveToPlayer(time: Float)
     {
-        p.x(p.x() - lockScroll.x())
-        p.y(p.y() - lockScroll.y())
-
         direction = Vector2Subtract(playerL, p);
         direction = Vector2Normalize(direction)
         direction.x(direction.x() * (speed.x() * time))
         direction.y(direction.y() * (speed.y() * time))
         checkAnimState(direction)
         p = Vector2Add(p, direction)
+    }
+
+    override fun update(lockScroll: Vector2, time: Float)
+    {
+        p.x(p.x() - lockScroll.x())
+        p.y(p.y() - lockScroll.y())
+
+        if (!canInteractWithPlayer) {
+            moveToPlayer(time)
+        } else {
+            println("CAN INTERACT")
+        }
 
         blockPos.x(0.0f).y(0.0f)
+        canInteractWithPlayer = false
     }
 
     override fun draw()

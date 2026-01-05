@@ -4,11 +4,12 @@ import com.raylib.Raylib
 import com.raylib.Raylib.GetScreenHeight
 import com.raylib.Raylib.GetScreenWidth
 import harkhorning.core.HardGlobalVariables
-import harkhorning.core.functional.Spawner
+import harkhorning.core.InitRoot
+import harkhorning.core.managers.Spawner
 import harkhorning.physics.creature.Creature
 import harkhorning.physics.creature.player.Player
 
-class EntityM() {
+class EntityM(val root: InitRoot) {
 
     val hC: HardGlobalVariables = HardGlobalVariables()
 
@@ -22,7 +23,7 @@ class EntityM() {
     var playerPos: Raylib.Vector2 = Raylib.Vector2()
         .x(GetScreenWidth() / 2.0f)
         .y(GetScreenHeight() / 2.0f)
-    var player: Player = Player(playerPos, 16.0f * hC.scaler, 32.0f * hC.scaler, 32.0f * hC.scaler)
+    var player: Player = Player(playerPos, 16.0f * hC.scaler, 32.0f * hC.scaler, 32.0f * hC.scaler, 0, 0f)
 
     init {
         enemyList.add(player)
@@ -30,7 +31,15 @@ class EntityM() {
 
     fun entityToEntity(e: Creature)
     {
-        for (e2 in enemyList) { if (e != e2) { e.checkGroundCol(e2.groundCollisionRect(), e2.p) } }
+        for (e2 in enemyList) {
+            if (e != e2 && e.checkGroundCol(e2.groundCollisionRect(), e2.p))
+            {
+                if (e is Player) {
+                    e2.canInteractWithPlayer = true
+                    root.playerDamage.basicHit(e2.damage, e2.power)
+                }
+            }
+        }
     }
 
     fun altOneUpdate()
@@ -54,7 +63,6 @@ class EntityM() {
         val li = enemyList
         for (i in 0 until li.size) {
             li[i].update(locked, time)
-            li[i].checkGroundCol(player.groundCollisionRect(), player.p)
             entityToEntity(li[i])
         }
         enemyList = li
