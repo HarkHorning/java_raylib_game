@@ -6,11 +6,13 @@ import harkhorning.core.HardGlobalVariables
 import harkhorning.core.InitRoot
 import harkhorning.physics.creature.player.Player
 
-class PlayerHealth(val root: InitRoot, val player: Player, var maxHealth: Int, var health: Int, val span: Int) {
+class PlayerHealth(var maxHealth: Int, var health: Int) {
 
-    val sprite: Raylib.Texture? = Raylib.LoadTexture("src/main/resources/assets/heart_16.png")
     val hC: HardGlobalVariables = HardGlobalVariables()
+    val span: Int = (16 * hC.scaler / 1.75).toInt()
+    val sprite: Raylib.Texture? = Raylib.LoadTexture("src/main/resources/assets/heart_16.png")
     var placementOrigin: Int = 0
+    var startedDying: Boolean = false
 
     init {
         placementOrigin = (Raylib.GetScreenWidth() / 2) - ((maxHealth * span) / 1.3).toInt()

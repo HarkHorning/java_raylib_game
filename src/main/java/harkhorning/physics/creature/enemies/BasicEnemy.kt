@@ -40,7 +40,7 @@ class BasicEnemy(p: Vector2, r: Float, h: Float, w: Float, damage: Int, power: F
         if (!canInteractWithPlayer) {
             moveToPlayer(time)
         } else {
-            println("CAN INTERACT")
+            // more attack logic here
         }
 
         blockPos.x(0.0f).y(0.0f)

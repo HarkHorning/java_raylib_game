@@ -14,6 +14,6 @@ class InitRoot() {
     val eM: EntityM = EntityM(this)
     val playerMovement: PlayerMovement = PlayerMovement(this, eM.player)
     val playerHud: PlayerHud = PlayerHud(this, eM.player)
-    val playerDamage: PlayerDamage = PlayerDamage(playerHud.playerHealth, eM.player)
+    val playerDamage: PlayerDamage = PlayerDamage(eM.player.playerHealth, eM.player)
     val map: MapRunner = MapRunner()
 }
