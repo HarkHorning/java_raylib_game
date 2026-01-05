@@ -12,6 +12,7 @@ import harkhorning.state.StateMachine;
 
 import java.util.ArrayList;
 
+import static com.raylib.Colors.DARKPURPLE;
 import static com.raylib.Raylib.*;
 
 public class MainMenu implements GameState {
@@ -32,9 +33,9 @@ public class MainMenu implements GameState {
     public void Init()
     {
         System.out.println("Initializing MainMenu");
-        startBtn = new Button(s, "Start", State.RUNNING, 28, (float)(GetScreenWidth() / 2), 0, 10);
-        optionsBtn = new Button(s, "Options", State.OPTION_MENU, 28, (float)(GetScreenWidth() / 2), 1, 10);
-        quitBtn = new Button(s, "Quit", State.QUITE, 28, (float)(GetScreenWidth() / 2), 2, 10);
+        startBtn = new Button(s, "Start", State.RUNNING, 34, (float)(GetScreenWidth() / 2), 0, 10);
+        optionsBtn = new Button(s, "Options", State.OPTION_MENU, 34, (float)(GetScreenWidth() / 2), 1, 10);
+        quitBtn = new Button(s, "Quit", State.QUITE, 34, (float)(GetScreenWidth() / 2), 2, 10);
         buttons.add(startBtn);
         buttons.add(optionsBtn);
         buttons.add(quitBtn);
@@ -49,8 +50,9 @@ public class MainMenu implements GameState {
     @Override
     public void Draw()
     {
-        com.CenteredText("GNOME SURVIVOR", Raylib.GetScreenWidth() / 2, 100, 44, com.colorMain);
-        DrawFPS(20, 20);
+        ClearBackground(DARKPURPLE);
+        com.CenteredText("GNOME SURVIVOR", Raylib.GetScreenWidth() / 2, 80, 64, com.colorMain);
+        DrawFPS(20, 10);
         for (Button button : buttons) {
             button.DrawButton();
         }

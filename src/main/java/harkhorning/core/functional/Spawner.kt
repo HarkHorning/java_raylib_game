@@ -3,14 +3,18 @@ package harkhorning.core.functional
 import com.raylib.Raylib
 import com.raylib.Raylib.GetScreenHeight
 import com.raylib.Raylib.GetScreenWidth
+import harkhorning.core.HardGlobalVariables
 import harkhorning.physics.creature.Creature
+import harkhorning.physics.creature.enemies.BasicEnemy
 import kotlin.random.Random
 
 class Spawner {
 
+    val hC: HardGlobalVariables = HardGlobalVariables()
+
     var spawnTimer = 0
-    var spawnInterval = 20
-    var offScreenD = 32.0f
+    var spawnInterval = 10
+    var offScreenD = 32.0f * hC.scaler
 
     fun rNum() : Float { return Random.nextFloat() }
 
@@ -30,7 +34,7 @@ class Spawner {
 
     fun chooseEnemy() : Creature
     {
-        return Creature(randomSpawnLocation(), 16.0f, 32.0f, 32.0f)
+        return BasicEnemy(randomSpawnLocation(), 16.0f * hC.scaler, 32.0f * hC.scaler, 32.0f * hC.scaler)
     }
 
     fun spawnNewEnemy(l: MutableList<Creature>) : MutableList<Creature>
@@ -44,7 +48,7 @@ class Spawner {
     {
         if (spawnTimer >= spawnInterval) {
             spawnTimer = 0
-            spawnInterval = (100 * rNum()).toInt()
+            spawnInterval = (80 * rNum()).toInt()
             return true
         }
         spawnTimer ++

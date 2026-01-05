@@ -14,7 +14,6 @@ import static com.raylib.Raylib.DrawText;
 
 public class StateMachine {
 
-    private final ReadWriteLock rwLock = new ReentrantReadWriteLock();
     private GameState currentState;
     ContextStream ctx;
     private final MainMenu mainMenu;
@@ -23,9 +22,6 @@ public class StateMachine {
     private final DeathScreen deathScreen;
     private final Quitting quitting;
     private boolean GAME_OVER = false;
-
-
-    int updatesPS = 0;
 
     public StateMachine(ContextStream ctx)
     {
@@ -66,22 +62,12 @@ public class StateMachine {
 
     public void UpdateGame()
     {
-        rwLock.writeLock().lock();
-        try {
-            currentState.Update();
-        } finally {
-            rwLock.writeLock().unlock();
-        }
+        currentState.Update();
     }
 
     public void DrawGame()
     {
-        rwLock.readLock().lock();
-        try {
-            currentState.Draw();
-        } finally {
-            rwLock.readLock().unlock();
-        }
+        currentState.Draw();
     }
 
     public void CLOSE_GAME()

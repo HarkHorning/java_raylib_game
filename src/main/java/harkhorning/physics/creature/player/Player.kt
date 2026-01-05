@@ -26,7 +26,7 @@ class Player(p: Vector2, r: Float, h: Float, w: Float) : Creature(p, r, h, w)
         return check
     }
 
-    override fun update(lockScroll: Vector2)
+    override fun update(lockScroll: Vector2, time: Float)
     {
 
     }

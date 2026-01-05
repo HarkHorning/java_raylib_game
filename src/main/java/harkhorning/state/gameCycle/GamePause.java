@@ -1,7 +1,9 @@
 package harkhorning.state.gameCycle;
 
+import com.raylib.Raylib;
 import harkhorning.graphics.ui.Button;
 import harkhorning.graphics.ui.ButtonInGame;
+import harkhorning.graphics.ui.Components;
 import harkhorning.state.GameState;
 import harkhorning.state.State;
 import harkhorning.state.StateMachine;
@@ -20,6 +22,7 @@ public class GamePause implements GameState {
     Button mainMenuBtn;
     Button quitBtn;
     ArrayList<Button> buttons = new ArrayList<>();
+    Components com = new Components();
 
     public GamePause(InGameStateMachine iGSM, StateMachine stateMachine)
     {
@@ -50,6 +53,7 @@ public class GamePause implements GameState {
     public void Draw()
     {
         ClearBackground(DARKPURPLE);
+        com.CenteredText("GAME PAUSED", Raylib.GetScreenWidth() / 2, 60, 44, com.colorMain);
         for (Button button : buttons) {
             button.DrawButton();
         }

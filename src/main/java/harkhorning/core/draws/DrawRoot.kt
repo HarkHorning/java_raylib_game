@@ -10,5 +10,6 @@ class DrawRoot(var r: InitRoot) {
     fun draw() {
         r.map.drawMap()
         eM.drawEachEntity()
+        r.playerHud.drawHud()
     }
 }

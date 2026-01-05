@@ -53,7 +53,6 @@ public class GameCycle implements GameState {
         ClearBackground(BLACK);
         if (inGameStateMachine.draw()) return;
         drawRoot.draw();
-        DrawFPS(20, 20);
     }
     @Override
     public void Exit()

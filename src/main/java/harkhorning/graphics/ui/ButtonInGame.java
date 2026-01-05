@@ -7,6 +7,7 @@ import harkhorning.state.gameCycle.InGameState;
 import harkhorning.state.gameCycle.InGameStateMachine;
 
 import static com.raylib.Colors.GRAY;
+import static com.raylib.Colors.LIGHTGRAY;
 import static com.raylib.Raylib.*;
 import static com.raylib.Raylib.MOUSE_BUTTON_LEFT;
 
@@ -40,8 +41,8 @@ public class ButtonInGame extends Button {
     public void DrawButton()
     {
         if (selected) {
-            Raylib.DrawRectangleLinesEx(rect, 4.0f, GRAY);
+            Raylib.DrawRectangleLinesEx(rect, 4.0f, LIGHTGRAY);
         }
-        Raylib.DrawText(text, (int)p.x(), (int)p.y(), size, GRAY);
+        Raylib.DrawText(text, (int)p.x(), (int)p.y(), size, LIGHTGRAY);
     }
 }

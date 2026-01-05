@@ -3,14 +3,17 @@ package harkhorning.graphics.ui;
 
 
 import com.raylib.Raylib;
+import harkhorning.core.HardGlobalVariables;
 import harkhorning.state.State;
 import harkhorning.state.StateMachine;
 
 import static com.raylib.Colors.GRAY;
+import static com.raylib.Colors.LIGHTGRAY;
 import static com.raylib.Raylib.*;
 
 public class Button implements ButtonInterface {
 
+    HardGlobalVariables hC = new HardGlobalVariables();
     StateMachine s;
     String text;
     int size;
@@ -26,9 +29,9 @@ public class Button implements ButtonInterface {
         this.size = size;
         this.statePotential = sP;
         Font defaultFont = GetFontDefault();
-        Vector2 textD = MeasureTextEx(defaultFont, t, size, 2);
-        int textSize = Raylib.MeasureText(text, size);
-        p = new Raylib.Vector2().x(x - (float)(textSize / 2)).y(i * 64 + 180.0f);
+        Vector2 textD = MeasureTextEx(defaultFont, t, this.size, 2);
+        int textSize = Raylib.MeasureText(text, this.size);
+        p = new Raylib.Vector2().x(x - (float)(textSize / 2)).y(i * 64 + 140.0f * hC.getScaler());
         rect = new Rectangle()
             .x(p.x() - pad)
             .y(p.y() - pad)
@@ -55,8 +58,8 @@ public class Button implements ButtonInterface {
     public void DrawButton()
     {
         if (selected) {
-            Raylib.DrawRectangleLinesEx(rect, 4.0f, GRAY);
+            Raylib.DrawRectangleLinesEx(rect, 4.0f, LIGHTGRAY);
         }
-        Raylib.DrawText(text, (int)p.x(), (int)p.y(), size, GRAY);
+        Raylib.DrawText(text, (int)p.x(), (int)p.y(), size, LIGHTGRAY);
     }
 }
