@@ -6,7 +6,8 @@ import harkhorning.core.HardGlobalVariables
 import harkhorning.core.InitRoot
 import harkhorning.physics.creature.player.Player
 
-class PlayerHud(val root: InitRoot, val player: Player) {
+class PlayerHud(root: InitRoot, val player: Player) {
+
     val hC: HardGlobalVariables = HardGlobalVariables()
     val span: Int = (16 * hC.scaler / 1.75).toInt()
     val playerLevel: PlayerLevel = PlayerLevel(root, player, span)

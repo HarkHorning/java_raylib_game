@@ -2,6 +2,7 @@ package harkhorning.physics.creature.enemies
 
 import com.raylib.Raylib.Vector2
 import com.raylib.Raylib.Vector2Add
+import com.raylib.Raylib.Vector2Distance
 import com.raylib.Raylib.Vector2Normalize
 import com.raylib.Raylib.Vector2Subtract
 import harkhorning.graphics.animation.AnimationDirection
@@ -11,6 +12,11 @@ import harkhorning.physics.creature.Creature
 class BasicEnemy(p: Vector2, r: Float, h: Float, w: Float, damage: Int, power: Float) : Creature(p, r, h, w, damage, power) {
 
     val animator = BasicEnemyAnimator("src/main/resources/assets/enemy_skeleton_32.png")
+
+    override fun distanceTo(p2: Vector2): Float
+    {
+        return Vector2Distance(p, p2)
+    }
 
     fun checkAnimState(d: Vector2)
     {

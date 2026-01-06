@@ -17,6 +17,7 @@ class Player(p: Vector2, r: Float, h: Float, w: Float, damage: Int, power: Float
 
     val animations = PlayerAnimation()
     val playerHealth = PlayerHealth(6, 4)
+    val attack = PlayerAttack()
     var dead: Boolean = false
 
     override fun checkGroundCol(r2: Rectangle, p2: Vector2) : Boolean

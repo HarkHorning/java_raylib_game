@@ -5,6 +5,7 @@ import com.raylib.Raylib.GetScreenHeight
 import com.raylib.Raylib.GetScreenWidth
 import com.raylib.Raylib.Vector2
 import com.raylib.Raylib.Vector2Add
+import com.raylib.Raylib.Vector2Distance
 import com.raylib.Raylib.Vector2Normalize
 import com.raylib.Raylib.Vector2Subtract
 import harkhorning.physics.objects.CollisionBase
@@ -13,6 +14,7 @@ open class Creature(p: Vector2, r: Float, h: Float, w: Float, var damage: Int, v
 {
 
     var canInteractWithPlayer = false
+    var distance = 1000f
 
     init {
         speed.x(100.0f)
@@ -23,6 +25,11 @@ open class Creature(p: Vector2, r: Float, h: Float, w: Float, var damage: Int, v
     fun destroy()
     {
 
+    }
+
+    open fun distanceTo(p2: Vector2): Float
+    {
+        return distance
     }
 
     open fun update(lockScroll: Vector2, time: Float)

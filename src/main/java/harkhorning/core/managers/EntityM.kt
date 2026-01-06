@@ -18,6 +18,7 @@ class EntityM(val root: InitRoot) {
     val interval = 20
     var timer = 0
     var timerTwo = 0
+    var nearestEnemy: Creature? = null
 
 
     var playerPos: Raylib.Vector2 = Raylib.Vector2()
@@ -64,6 +65,9 @@ class EntityM(val root: InitRoot) {
         for (i in 0 until li.size) {
             li[i].update(locked, time)
             entityToEntity(li[i])
+            if (nearestEnemy != null && nearestEnemy!!.distanceTo(player.p) > li[i].distanceTo(player.p)) {
+                nearestEnemy = li[i]
+            }
         }
         enemyList = li
 
