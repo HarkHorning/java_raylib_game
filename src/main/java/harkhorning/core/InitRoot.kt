@@ -7,8 +7,9 @@ import harkhorning.physics.creature.player.hud.PlayerHealth
 import harkhorning.physics.creature.player.hud.PlayerHud
 import harkhorning.physics.creature.player.PlayerMovement
 import harkhorning.physics.maps.MapRunner
+import harkhorning.state.StateMachine
 
-class InitRoot() {
+class InitRoot(val s: StateMachine) {
 
     var globalShift: Raylib.Vector2 = Raylib.Vector2()
     val eM: EntityM = EntityM(this)

@@ -5,26 +5,29 @@ import com.raylib.Raylib.GetScreenHeight
 import com.raylib.Raylib.GetScreenWidth
 import harkhorning.core.HardGlobalVariables
 import harkhorning.core.InitRoot
-import harkhorning.core.managers.Spawner
 import harkhorning.physics.creature.Creature
 import harkhorning.physics.creature.player.Player
+import harkhorning.Misc.TickCounter
 
 class EntityM(val root: InitRoot) {
 
     val hC: HardGlobalVariables = HardGlobalVariables()
-
     var enemyList = mutableListOf<Creature>()
     val sp: Spawner = Spawner()
-    val interval = 20
-    var timer = 0
-    var timerTwo = 0
     var nearestEnemy: Creature? = null
-
+    var updateTickCrounter: TickCounter = TickCounter(1, 0f)
 
     var playerPos: Raylib.Vector2 = Raylib.Vector2()
-        .x(GetScreenWidth() / 2.0f)
-        .y(GetScreenHeight() / 2.0f)
-    var player: Player = Player(playerPos, 16.0f * hC.scaler, 32.0f * hC.scaler, 32.0f * hC.scaler, 0, 0f)
+                            .x(GetScreenWidth() / 2.0f)
+                            .y(GetScreenHeight() / 2.0f)
+    var player: Player = Player(
+            playerPos,
+            16.0f * hC.scaler,
+            32.0f * hC.scaler,
+            32.0f * hC.scaler,
+            0,
+            0f,
+            root.s)
 
     init {
         enemyList.add(player)
@@ -43,22 +46,6 @@ class EntityM(val root: InitRoot) {
         }
     }
 
-    fun altOneUpdate()
-    {
-        if (timer >= interval) {
-            timer = 0
-            enemyList.sortBy { it.p.y() }
-        } else timer ++
-    }
-
-    fun altOneDraw()
-    {
-        if (timerTwo >= interval) {
-            timerTwo = 0
-            if (sp.checkForSpawn()) sp.spawnNewEnemy(enemyList) // find a better place for this
-        } else timerTwo ++
-    }
-
     fun forEachEntity(locked : Raylib.Vector2, time: Float)
     {
         val li = enemyList
@@ -71,7 +58,10 @@ class EntityM(val root: InitRoot) {
         }
         enemyList = li
 
-        altOneUpdate()
+        if (updateTickCrounter.increment()) {
+            enemyList.sortBy { it.p.y() } // sort entities by draw order
+            if (sp.checkForSpawn()) sp.spawnNewEnemy(enemyList) // check for and spawn new enemy
+        }
     }
 
     fun drawEachEntity()
@@ -80,7 +70,5 @@ class EntityM(val root: InitRoot) {
         for (i in 0 until li.size) {
             li[i].draw()
         }
-
-        altOneDraw()
     }
 }

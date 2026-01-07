@@ -12,6 +12,7 @@ class PlayerLevel(val root: InitRoot, val player: Player, var span: Int) {
 
     var nextLevel: Int = 25
     var progress: Int = 5
+    var levelNum: Int = 0
 
     fun getLevelBar(): Raylib.Rectangle
     {

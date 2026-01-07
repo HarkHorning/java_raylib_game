@@ -29,16 +29,16 @@ public class GameCycle implements GameState {
     {
         s = stateMachine;
         this.ctx = ctx;
-        this.inGameStateMachine = new InGameStateMachine(s);
-        this.initRoot = new InitRoot();
-        this.updateRoot = new UpdateRoot(initRoot);
-        this.drawRoot = new DrawRoot(initRoot);
     }
 
     @Override
     public void Init()
     {
         System.out.println("Initializing GameCycle");
+        this.inGameStateMachine = new InGameStateMachine(s);
+        this.initRoot = new InitRoot(s);
+        this.updateRoot = new UpdateRoot(initRoot);
+        this.drawRoot = new DrawRoot(initRoot);
     }
     @Override
     public void Update()

@@ -11,14 +11,17 @@ import com.raylib.Raylib.Vector2Zero
 import harkhorning.graphics.animation.AnimationEnums
 import harkhorning.physics.creature.Creature
 import harkhorning.physics.creature.player.hud.PlayerHealth
+import harkhorning.state.StateMachine
+import harkhorning.Misc.DeathTimer
 
-class Player(p: Vector2, r: Float, h: Float, w: Float, damage: Int, power: Float) : Creature(p, r, h, w, damage, power)
+class Player(p: Vector2, r: Float, h: Float, w: Float, damage: Int, power: Float, val s: StateMachine) : Creature(p, r, h, w, damage, power)
 {
 
     val animations = PlayerAnimation()
-    val playerHealth = PlayerHealth(6, 4)
+    val playerHealth = PlayerHealth(4, 4)
     val attack = PlayerAttack()
     var dead: Boolean = false
+    val deathTimer: DeathTimer = DeathTimer(2000)
 
     override fun checkGroundCol(r2: Rectangle, p2: Vector2) : Boolean
     { // come back to this
@@ -40,15 +43,14 @@ class Player(p: Vector2, r: Float, h: Float, w: Float, damage: Int, power: Float
             animations.setAnimationState(AnimationEnums.DYING)
             stagger = Vector2Zero()
             if (!playerHealth.startedDying) {
-                // start timer
-                 playerHealth.startedDying = true
+                deathTimer.startTimer(s)
+                playerHealth.startedDying = true
             }
             return
         }
         if (Vector2Length(stagger) >= 0.5f) {
             animations.setAnimationState(AnimationEnums.STAGGER)
             stagger = Vector2Lerp(stagger, Vector2Zero(), 2.5f * time)
-            println(Vector2Length(stagger))
         } else {
             stagger = Vector2Zero()
         }
