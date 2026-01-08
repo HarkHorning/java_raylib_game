@@ -61,6 +61,10 @@ class BasicEnemy(p: Vector2, r: Float, h: Float, w: Float, damage: Int, power: F
 
         blockPos.x(0.0f).y(0.0f)
         canInteractWithPlayer = false
+        if (health < 1) {
+            animator.setAnimationState(AnimationEnums.DYING)
+            creatureDeathTimer.startTimer(this)
+        }
     }
 
     override fun draw()

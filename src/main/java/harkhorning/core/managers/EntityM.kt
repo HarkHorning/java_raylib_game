@@ -68,11 +68,14 @@ class EntityM(val root: InitRoot) {
     fun forEachEntity(locked : Raylib.Vector2, time: Float)
     {
         val li = enemyList
+        var kill: Creature? = null
         for (i in 0 until li.size) {
             li[i].update(locked, time)
             entityToEntity(li[i])
             getNearest(li[i])
+            if (li[i].dead) kill = li[i]
         }
+        enemyList.remove(kill)
         enemyList = li
 
         if (updateTickCrounter.increment()) {

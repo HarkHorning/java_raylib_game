@@ -8,6 +8,7 @@ import com.raylib.Raylib.Vector2Add
 import com.raylib.Raylib.Vector2Distance
 import com.raylib.Raylib.Vector2Normalize
 import com.raylib.Raylib.Vector2Subtract
+import harkhorning.Misc.CreatureDeathTimer
 import harkhorning.physics.objects.CollisionBase
 
 open class Creature(p: Vector2, r: Float, h: Float, w: Float, var damage: Int, var power: Float) : CollisionBase(p, r, h, w)
@@ -15,6 +16,8 @@ open class Creature(p: Vector2, r: Float, h: Float, w: Float, var damage: Int, v
 
     var canInteractWithPlayer = false
     var distance = 1000f
+    val creatureDeathTimer: CreatureDeathTimer = CreatureDeathTimer(2000)
+    var dead = false
 
     init {
         speed.x(100.0f)
@@ -24,7 +27,7 @@ open class Creature(p: Vector2, r: Float, h: Float, w: Float, var damage: Int, v
 
     fun destroy()
     {
-
+        dead = true
     }
 
     open fun distanceTo(p2: Vector2): Float

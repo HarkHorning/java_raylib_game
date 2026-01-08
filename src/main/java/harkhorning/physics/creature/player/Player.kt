@@ -29,7 +29,6 @@ class Player(
 
     val animations = PlayerAnimation()
     val playerHealth = PlayerHealth(4, 4)
-    var dead: Boolean = false
     val deathTimer: DeathTimer = DeathTimer(2000)
 
     override fun checkGroundCol(r2: Rectangle, p2: Vector2) : Boolean
