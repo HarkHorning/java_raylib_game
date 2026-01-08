@@ -1,6 +1,7 @@
 package harkhorning.core.managers
 
 import com.raylib.Raylib
+import harkhorning.Misc.TickCounter
 import harkhorning.core.HardGlobalVariables
 import harkhorning.physics.creature.Creature
 import harkhorning.physics.creature.enemies.BasicEnemy
@@ -11,7 +12,8 @@ class Spawner {
     val hC: HardGlobalVariables = HardGlobalVariables()
 
     var spawnTimer = 0
-    var spawnInterval = 10
+    var spawnInterval = 6
+//    val spawnTimer: TickCounter = TickCounter(5, 1f)
     var offScreenD = 32.0f * hC.scaler
 
     fun rNum() : Float { return Random.Default.nextFloat() }
@@ -46,7 +48,7 @@ class Spawner {
     {
         if (spawnTimer >= spawnInterval) {
             spawnTimer = 0
-            spawnInterval = (80 * rNum()).toInt()
+            spawnInterval = (60 * rNum()).toInt()
             return true
         }
         spawnTimer ++

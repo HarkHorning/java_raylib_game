@@ -15,7 +15,7 @@ class BasicEnemyAnimator(filePath: String) {
     var sprite: Raylib.Texture? = LoadTexture(filePath)
     val standing = Animation(0, 5, 0, 1, 0.2f, 0.2f, AnimationType.REPEATING, 32)
     val moving = Animation(12, 17, 0, 1, 0.2f, 0.2f, AnimationType.REPEATING, 32)
-    val stagger = Animation(18, 23, 0, 1, 0.2f, 0.2f, AnimationType.SINGLE, 32)
+    val stagger = Animation(18, 23, 0, 1, 0.2f, 0.2f, AnimationType.REPEATING, 32)
     val dying = Animation(6, 11, 0, 1, 0.2f, 0.2f, AnimationType.SINGLE, 32)
     var currentAnimation: Animation? = standing
     var direction: AnimationDirection = AnimationDirection.RIGHT

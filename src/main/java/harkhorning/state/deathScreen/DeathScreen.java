@@ -47,7 +47,7 @@ public class DeathScreen implements GameState {
     public void Draw()
     {
         ClearBackground(MAROON);
-        com.CenteredText("YOU DIED", Raylib.GetScreenWidth() / 2, 80, 64, com.colorMain);
+        com.CenteredText("YOU DIED", Raylib.GetScreenWidth() / 2, 80, 64, com.colorSecondary);
         for (Button button : buttons) {
             button.DrawButton();
         }

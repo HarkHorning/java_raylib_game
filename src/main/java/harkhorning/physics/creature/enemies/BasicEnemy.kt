@@ -3,8 +3,11 @@ package harkhorning.physics.creature.enemies
 import com.raylib.Raylib.Vector2
 import com.raylib.Raylib.Vector2Add
 import com.raylib.Raylib.Vector2Distance
+import com.raylib.Raylib.Vector2Length
+import com.raylib.Raylib.Vector2Lerp
 import com.raylib.Raylib.Vector2Normalize
 import com.raylib.Raylib.Vector2Subtract
+import com.raylib.Raylib.Vector2Zero
 import harkhorning.graphics.animation.AnimationDirection
 import harkhorning.graphics.animation.AnimationEnums
 import harkhorning.physics.creature.Creature
@@ -40,13 +43,20 @@ class BasicEnemy(p: Vector2, r: Float, h: Float, w: Float, damage: Int, power: F
 
     override fun update(lockScroll: Vector2, time: Float)
     {
-        p.x(p.x() - lockScroll.x())
-        p.y(p.y() - lockScroll.y())
+        p.x(p.x() - lockScroll.x() + stagger.x())
+        p.y(p.y() - lockScroll.y() + stagger.y())
 
         if (!canInteractWithPlayer) {
             moveToPlayer(time)
         } else {
             // more attack logic here
+        }
+
+        if (Vector2Length(stagger) >= 0.5f) {
+            animator.setAnimationState(AnimationEnums.STAGGER)
+            stagger = Vector2Lerp(stagger, Vector2Zero(), 2.5f * time)
+        } else {
+            stagger = Vector2Zero()
         }
 
         blockPos.x(0.0f).y(0.0f)

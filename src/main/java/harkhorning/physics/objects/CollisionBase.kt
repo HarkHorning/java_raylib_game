@@ -5,13 +5,14 @@ import com.raylib.Raylib.Rectangle
 import com.raylib.Raylib.Vector2
 import com.raylib.Raylib.Vector2Add
 import com.raylib.Raylib.Vector2Normalize
+import com.raylib.Raylib.Vector2Scale
 import com.raylib.Raylib.Vector2Subtract
 
 abstract class CollisionBase(p: Vector2, r: Float, h: Float, w: Float) : PhysicsShapes(p, r, h, w)
 {
 
-    var blockPos: Vector2 = Vector2();
-    var stagger: Vector2 = Vector2();
+    var blockPos: Vector2 = Vector2()
+    var stagger: Vector2 = Vector2()
     var speed = Vector2()
     var playerL = Vector2()
     var direction = Vector2()
@@ -28,13 +29,14 @@ abstract class CollisionBase(p: Vector2, r: Float, h: Float, w: Float) : Physics
         return check
     }
 
-    fun checkHit(r2: Rectangle, p2: Vector2) : Boolean
+    fun checkHit(r2: Rectangle, p2: Vector2, power: Float, damage: Float) : Boolean
     {
         val check: Boolean = CheckCollisionRecs(this.hitCollisionRect(), r2)
         if (check)
         {
             val direction_vec: Vector2? = Vector2Subtract(p, p2) //
             stagger = Vector2Normalize(direction_vec)
+            stagger = Vector2Scale(stagger, power)
         }
         return check
     }

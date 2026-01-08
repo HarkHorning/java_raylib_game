@@ -13,13 +13,22 @@ import harkhorning.physics.creature.Creature
 import harkhorning.physics.creature.player.hud.PlayerHealth
 import harkhorning.state.StateMachine
 import harkhorning.Misc.DeathTimer
+import harkhorning.physics.creature.player.attacks.PlayerAttack
 
-class Player(p: Vector2, r: Float, h: Float, w: Float, damage: Int, power: Float, val s: StateMachine) : Creature(p, r, h, w, damage, power)
+class Player(
+             p: Vector2,
+             r: Float,
+             h: Float,
+             w: Float,
+             damage: Int,
+             power: Float,
+             val s: StateMachine,
+             val playerAttack: PlayerAttack
+    ) : Creature(p, r, h, w, damage, power)
 {
 
     val animations = PlayerAnimation()
     val playerHealth = PlayerHealth(4, 4)
-    val attack = PlayerAttack()
     var dead: Boolean = false
     val deathTimer: DeathTimer = DeathTimer(2000)
 
