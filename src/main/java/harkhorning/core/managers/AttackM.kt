@@ -2,10 +2,8 @@ package harkhorning.core.managers
 
 import com.raylib.Raylib
 import harkhorning.physics.creature.Creature
-import harkhorning.physics.creature.enemies.BasicEnemy
 import harkhorning.physics.creature.player.attacks.PlayerAttack
 import harkhorning.physics.projectile.BasicAttack
-import org.w3c.dom.css.Rect
 
 class AttackM(val playerAttack: PlayerAttack) {
 
@@ -22,12 +20,13 @@ class AttackM(val playerAttack: PlayerAttack) {
         val attacks: MutableList<BasicAttack> = playerAttack.attacks
         var boo = false
         var markedForDeletion: BasicAttack? = null
-        for (attack in attacks) {
 
+        for (attack in attacks) {
             if (e.checkHit(attack.getCollisionRect(), attack.p, attack.power, attack.damage)) {
                 markedForDeletion = attack
             }
         }
+
         attacks.remove(markedForDeletion)
         playerAttack.attacks = attacks
         return boo

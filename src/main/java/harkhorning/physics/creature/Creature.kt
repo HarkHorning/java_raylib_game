@@ -16,7 +16,7 @@ open class Creature(p: Vector2, r: Float, h: Float, w: Float, var damage: Int, v
 
     var canInteractWithPlayer = false
     var distance = 1000f
-    val creatureDeathTimer: CreatureDeathTimer = CreatureDeathTimer(2000)
+    val creatureDeathTimer: CreatureDeathTimer = CreatureDeathTimer(1500)
     var dead = false
 
     init {
@@ -37,16 +37,7 @@ open class Creature(p: Vector2, r: Float, h: Float, w: Float, var damage: Int, v
 
     open fun update(lockScroll: Vector2, time: Float)
     {
-//        p.x(p.x() - lockScroll.x())
-//        p.y(p.y() - lockScroll.y())
-//
-//        direction = Vector2Subtract(playerL, p);
-//        direction = Vector2Normalize(direction)
-//        direction.x(direction.x() / (speed.x()))
-//        direction.y(direction.y() / (speed.y()))
-//        p = Vector2Add(p, direction)
-//
-//        blockPos.x(0.0f).y(0.0f)
+
     }
 
     open fun draw()

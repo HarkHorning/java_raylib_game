@@ -15,6 +15,7 @@ import harkhorning.physics.creature.Creature
 class BasicEnemy(p: Vector2, r: Float, h: Float, w: Float, damage: Int, power: Float) : Creature(p, r, h, w, damage, power) {
 
     val animator = BasicEnemyAnimator("src/main/resources/assets/enemy_skeleton_32.png")
+    var dying = false
 
     override fun distanceTo(p2: Vector2): Float
     {
@@ -63,7 +64,10 @@ class BasicEnemy(p: Vector2, r: Float, h: Float, w: Float, damage: Int, power: F
         canInteractWithPlayer = false
         if (health < 1) {
             animator.setAnimationState(AnimationEnums.DYING)
-            creatureDeathTimer.startTimer(this)
+            if (!dying) {
+                creatureDeathTimer.startTimer(this)
+                dying = true
+            }
         }
     }
 

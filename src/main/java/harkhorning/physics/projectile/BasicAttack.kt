@@ -8,6 +8,7 @@ import com.raylib.Raylib.GetScreenWidth
 import com.raylib.Raylib.Vector2Add
 import com.raylib.Raylib.Vector2Normalize
 import com.raylib.Raylib.Vector2Subtract
+import harkhorning.physics.creature.player.attacks.AttackType
 
 class BasicAttack(
     var targetP: Raylib.Vector2

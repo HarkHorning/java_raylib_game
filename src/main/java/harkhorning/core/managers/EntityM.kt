@@ -20,18 +20,13 @@ class EntityM(val root: InitRoot) {
 
     val attack = PlayerAttack(this)
     var playerPos: Raylib.Vector2 = Raylib.Vector2()
-                            .x(GetScreenWidth() / 2.0f)
-                            .y(GetScreenHeight() / 2.0f)
+            .x(GetScreenWidth() / 2.0f).y(GetScreenHeight() / 2.0f)
+
     var player: Player = Player(
-            playerPos,
-            16.0f * hC.scaler,
-            32.0f * hC.scaler,
-            32.0f * hC.scaler,
-            0,
-            0f,
-            root.s,
-            attack
-            )
+            playerPos, 16.0f * hC.scaler, 32.0f * hC.scaler, 32.0f * hC.scaler,
+            0, 0f,
+            root.s, attack)
+
     val attackM: AttackM = AttackM(player.playerAttack)
 
     init {
@@ -43,24 +38,19 @@ class EntityM(val root: InitRoot) {
         if (e !is Player) { // clean this later
             attackM.checkForHit(e)
             if (nearestEnemy != null) {
-                if (nearestEnemy!!.distanceTo(player.p) > e.distanceTo(
-                        player.p
-                    )
-                ) { nearestEnemy = e }
-            }
-            else { nearestEnemy = e }
+                if (nearestEnemy!!.distanceTo(player.p) > e.distanceTo(player.p)) { nearestEnemy = e }
+            } else { nearestEnemy = e }
         }
     }
 
     fun entityToEntity(e: Creature)
     {
         for (e2 in enemyList) {
-            if (e != e2 && e.checkGroundCol(e2.groundCollisionRect(), e2.p))
+            if (e != e2 && e.checkGroundCol(e2.groundCollisionRect(), e2.p)
+                && e is Player)
             {
-                if (e is Player) {
-                    e2.canInteractWithPlayer = true
-                    root.playerDamage.basicHit(e2.damage, e2.power)
-                }
+                e2.canInteractWithPlayer = true
+                root.playerDamage.basicHit(e2.damage, e2.power)
             }
         }
     }

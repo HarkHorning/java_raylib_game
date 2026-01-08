@@ -16,12 +16,16 @@ class PlayerAttack(val eM: EntityM) {
 
     fun update()
     {
-        for (attack in attackSpawners) {
+        for (spawner in attackSpawners) {
+
             if (eM.enemyList.size > 1 && eM.nearestEnemy != null) {
-                val a: BasicAttack? = attack.check(attackFrequency, eM.nearestEnemy!!.p)
-                if (a != null) {
-                    attacks.add(a)
+                val a: BasicAttack? = when (spawner.attackType) {
+                    AttackType.NEAREST -> spawner.check(attackFrequency, eM.nearestEnemy!!.p, null)
+                    AttackType.RANDOM -> spawner.check(attackFrequency, null, null)
+                    AttackType.FROM_ENEMY_LIST -> spawner.check(attackFrequency, null, eM.enemyList)
                 }
+
+                if (a != null) { attacks.add(a) }
             }
         }
     }
