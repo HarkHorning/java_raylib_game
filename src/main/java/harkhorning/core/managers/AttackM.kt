@@ -22,7 +22,7 @@ class AttackM(val playerAttack: PlayerAttack) {
         var markedForDeletion: BasicAttack? = null
 
         for (attack in attacks) {
-            if (e.checkHit(attack.getCollisionRect(), attack.p, attack.power, attack.damage)) {
+            if (e.checkHit(attack.getCollisionRect(), attack.p, attack.direction, attack.power, attack.damage)) {
                 markedForDeletion = attack
             }
         }

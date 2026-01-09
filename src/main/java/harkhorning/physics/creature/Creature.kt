@@ -16,7 +16,7 @@ open class Creature(p: Vector2, r: Float, h: Float, w: Float, var damage: Int, v
 
     var canInteractWithPlayer = false
     var distance = 1000f
-    val creatureDeathTimer: CreatureDeathTimer = CreatureDeathTimer(1500)
+    val creatureDeathTimer: CreatureDeathTimer = CreatureDeathTimer(1250)
     var dead = false
 
     init {

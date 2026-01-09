@@ -16,12 +16,8 @@ import harkhorning.Misc.DeathTimer
 import harkhorning.physics.creature.player.attacks.PlayerAttack
 
 class Player(
-             p: Vector2,
-             r: Float,
-             h: Float,
-             w: Float,
-             damage: Int,
-             power: Float,
+             p: Vector2, r: Float, h: Float, w: Float,
+             damage: Int, power: Float,
              val s: StateMachine,
              val playerAttack: PlayerAttack
     ) : Creature(p, r, h, w, damage, power)

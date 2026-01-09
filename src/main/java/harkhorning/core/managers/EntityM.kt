@@ -37,7 +37,7 @@ class EntityM(val root: InitRoot) {
     {
         if (e !is Player) { // clean this later
             attackM.checkForHit(e)
-            if (nearestEnemy != null) {
+            if (nearestEnemy != null && !nearestEnemy!!.dead) {
                 if (nearestEnemy!!.distanceTo(player.p) > e.distanceTo(player.p)) { nearestEnemy = e }
             } else { nearestEnemy = e }
         }

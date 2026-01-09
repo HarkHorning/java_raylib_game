@@ -12,7 +12,7 @@ class Spawner {
     val hC: HardGlobalVariables = HardGlobalVariables()
 
     var spawnTimer = 0
-    var spawnInterval = 6
+    var spawnInterval = 4
 //    val spawnTimer: TickCounter = TickCounter(5, 1f)
     var offScreenD = 32.0f * hC.scaler
 
@@ -48,7 +48,7 @@ class Spawner {
     {
         if (spawnTimer >= spawnInterval) {
             spawnTimer = 0
-            spawnInterval = (60 * rNum()).toInt()
+            spawnInterval = (10 * rNum()).toInt()
             return true
         }
         spawnTimer ++

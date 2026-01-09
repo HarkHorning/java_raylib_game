@@ -23,20 +23,19 @@ abstract class CollisionBase(p: Vector2, r: Float, h: Float, w: Float) : Physics
         val check: Boolean = CheckCollisionRecs(this.groundCollisionRect(), r2)
         if (check)
         {
-            val direction_vec: Vector2? = Vector2Subtract(p, p2) //
-            blockPos = Vector2Normalize(direction_vec)
+            val directionVec: Vector2? = Vector2Subtract(p, p2) //
+            blockPos = Vector2Normalize(directionVec)
             p = Vector2Add(p, blockPos)
         }
         return check
     }
 
-    fun checkHit(r2: Rectangle, p2: Vector2, power: Float, damage: Float) : Boolean
+    fun checkHit(r2: Rectangle, p2: Vector2, direction: Vector2, power: Float, damage: Float) : Boolean
     {
         val check: Boolean = CheckCollisionRecs(this.hitCollisionRect(), r2)
         if (check)
         {
-            val direction_vec: Vector2? = Vector2Subtract(p, p2) //
-            stagger = Vector2Normalize(direction_vec)
+            stagger = Vector2Normalize(direction)
             stagger = Vector2Scale(stagger, power)
             health -= damage
         }
