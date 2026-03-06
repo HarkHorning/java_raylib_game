@@ -1,10 +1,16 @@
 package harkhorning.state;
 
-import harkhorning.state.DeathScreen.DeathScreen;
-import harkhorning.state.GameCycle.GameCycle;
-import harkhorning.state.MainMenu.MainMenu;
-import harkhorning.state.OptionMenu.OptionMenu;
-import harkhorning.state.Quitting.Quitting;
+import harkhorning.state.deathScreen.DeathScreen;
+import harkhorning.state.gameCycle.GameCycle;
+import harkhorning.state.mainMenu.MainMenu;
+import harkhorning.state.optionMenu.OptionMenu;
+import harkhorning.state.quitting.Quitting;
+
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+
+import static com.raylib.Colors.WHITE;
+import static com.raylib.Raylib.DrawText;
 
 public class StateMachine {
 

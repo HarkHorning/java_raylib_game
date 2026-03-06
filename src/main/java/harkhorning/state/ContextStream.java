@@ -1,12 +1,10 @@
 package harkhorning.state;
 
-import com.raylib.Raylib.Vector2;
-
 public class ContextStream {
 
-    public Vector2 GlobalShift;
+//    public Vector2 GlobalShift;
 
     public ContextStream() {
-        GlobalShift = new Vector2();
+//        GlobalShift = new Vector2();
     }
 }
